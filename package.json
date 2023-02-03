@@ -2,7 +2,7 @@
     "name": "handmall-ui-admin",
     "version": "1.0.0",
     "description": "React app for handmall admin",
-    "main": "index.ts",
+    "main": "index.tsx",
     "repository": "https://github.com/RusAl311/handmall-ui-admin.git",
     "author": "RusAl311",
     "license": "MIT",
@@ -12,7 +12,7 @@
         "tscheck": "tsc",
         "lint": "eslint '**/*.{ts,tsx}'",
         "lint:fix": "eslint '**/*.{ts,tsx}' --fix",
-        "format": "prettier --write '**/*.{ts,tsx,scss,css,js,jsx,json}'",
+        "format": "prettier --write '**/*.{ts,tsx,scss,css,js,jsx,json}'"
     },
     "devDependencies": {
         "@babel/core": "^7.20.12",
@@ -39,7 +39,11 @@
         "webpack-dev-server": "^4.11.1"
     },
     "dependencies": {
+        "@emotion/react": "^11.10.5",
+        "@emotion/styled": "^11.10.5",
+        "@mui/material": "^5.11.5",
         "react": "^18.2.0",
-        "react-dom": "^18.2.0"
+        "react-dom": "^18.2.0",
+        "react-router-dom": "^6.8.0"
     }
 }

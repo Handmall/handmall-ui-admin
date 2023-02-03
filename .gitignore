@@ -1,5 +1,12 @@
 .DS_Store
 node_modules/
 .vscode/
+.idea/
+npm-debug.log*
 yarn.lock
+yarn-debug.log*
+yarn-error.log*
 build/
+*.tgz
+/.changelog
+.npm/
