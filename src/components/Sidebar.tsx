@@ -1,6 +1,6 @@
 import { Drawer, Toolbar, Divider, List, ListItem, ListItemButton, ListItemText } from "@mui/material";
 
-function Sidebar() {
+const Sidebar = () => {
     return (
         <Drawer
             sx={{ width: 240, flexShrink: 0 }}

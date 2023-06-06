@@ -2,5 +2,7 @@
 
 // const routes: Array<Route> = [
 //     {
+//         path: '/',
+//         element: <Dashboard/>
 //     }
 // ]

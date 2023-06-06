@@ -1,6 +1,6 @@
 interface Route {
     path: string,
-    element: React.ReactNode,
+    element: JSX.Element,
     permission?: string,
     children?: Array<Route>
 }
