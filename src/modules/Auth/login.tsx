@@ -34,7 +34,6 @@ const Login = () => {
                         Sign in
                     </Typography>
                     <Box component="form" noValidate sx={{ mt: 1 }}>
-                        <form>
                             <Controller 
                                 name="username"
                                 control={control}
@@ -69,8 +68,6 @@ const Login = () => {
                             >
                                 Sign In
                             </Button>
-                        </form>
-
                         <Grid container>
                             <Grid item xs>
                                 <Link href="#" variant="body2">
