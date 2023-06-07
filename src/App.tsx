@@ -1,15 +1,9 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
-import Dashboard from "./modules/Dashboard"
+import { useRoutes } from "react-router-dom"
+import routes from "./routes"
 
 function App() {
-
-  return (
-    <Router>
-		<Routes>
-			<Route path="/" element={<Dashboard />} />
-		</Routes>
-    </Router>
-  )
+	const content = useRoutes(routes)
+	return content
 }
 
 export default App
