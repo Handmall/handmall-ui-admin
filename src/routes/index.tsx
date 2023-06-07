@@ -3,6 +3,7 @@ import Dashboard from "../modules/Dashboard";
 import Layout from "../components/Layout";
 import Category from "../modules/Category";
 import Department from "../modules/Department";
+import Login from "../modules/Auth/login";
 
 const routes: RouteObject[] = [
     {
@@ -20,6 +21,15 @@ const routes: RouteObject[] = [
             {
                 path: 'department',
                 element: <Department/>
+            }
+        ],
+    },
+    {
+        path: 'auth/*',
+        children: [
+            {
+                path: 'login',
+                element: <Login />
             }
         ]
     }

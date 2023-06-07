@@ -1,6 +1,7 @@
 import { Outlet } from "react-router-dom"
 import Header from "./Header"
 import Sidebar from "./Sidebar"
+import Copyright from "./Copyright"
 import { Box, Container, Toolbar } from "@mui/material"
 import "../assets/scss/common.scss"
 
@@ -26,6 +27,7 @@ const Layout = () => {
                     </Container>
                     
                 </Box>
+                <Copyright />
             </Box>       
         </>
     )
