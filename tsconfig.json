@@ -6,6 +6,21 @@
     "module": "ESNext",
     "skipLibCheck": true,
 
+    /* Alias */
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"],
+      "@assets/*": ["src/assets/*"],
+      "@images/*": ["src/assets/images/*"],
+      "@styles/*": ["src/assets/scss/*"],
+      "@components/*": ["src/components/*"],
+      "@constants/*": ["src/constants/*"],
+      "@modules/*": ["src/modules/*"],
+      "@routes/*": ["src/routes/*"],
+      "@store/*": ["src/store/*"],
+      "@types/*": ["src/types/*"]
+    },
+
     /* Bundler mode */
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,

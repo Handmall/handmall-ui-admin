@@ -1,8 +1,8 @@
 import { Outlet } from "react-router-dom"
-import Header from "./AppHeader"
-import Sidebar from "./Sidebar"
+import Header from "@components/AppHeader"
+import Sidebar from "@components/Sidebar"
 import { Layout } from 'antd'
-import "../assets/scss/common.scss"
+import "@styles/common.scss"
 
 const { Content } = Layout
 

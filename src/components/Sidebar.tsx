@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import menuItems from "../constants/menu";
+import menuItems from "@constants/menu";
 import { Layout, Menu, MenuProps } from "antd"
 import { createElement, useState } from "react";
 
