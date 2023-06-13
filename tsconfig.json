@@ -18,7 +18,8 @@
       "@modules/*": ["src/modules/*"],
       "@routes/*": ["src/routes/*"],
       "@store/*": ["src/store/*"],
-      "@types/*": ["src/types/*"]
+      "@types/*": ["src/types/*"],
+      "@services/*": ["src/services/*"]
     },
 
     /* Bundler mode */
