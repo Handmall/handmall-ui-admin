@@ -1,38 +1,54 @@
-import { Drawer, Toolbar, Divider, List, ListItem, ListItemButton, ListItemText } from "@mui/material";
 import { Link } from "react-router-dom";
 import menuItems from "../constants/menu";
+import { Layout, Menu, MenuProps } from "antd"
+import { createElement, useState } from "react";
+
+const {  Sider } = Layout
 
 const Sidebar = () => {
+	const [collapsed, setCollapsed] = useState(false)
+
+	const menu: MenuProps['items'] = menuItems.map((item, index) => {
+		return {
+			key: index,
+			icon: createElement(item.icon),
+			label: item.subItems ? (
+                item.name
+            ) : (
+                <Link to={item.url}>{item.name}</Link>
+            ),
+			children: item.subItems
+                ? item.subItems.map((si, i) => {
+                      return {
+                          key: (i + 10) * (index + 20) + 10,
+                          icon: createElement(si.icon),
+                          label: <Link to={si.url}>{si.name}</Link>,
+                      }
+                  })
+                : null,
+		}
+	})
+
     return (
-        <Drawer
-            sx={{ width: 240, flexShrink: 0 }}
-            variant="permanent"
-        >
-            <Toolbar 
-                sx={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'flex-end',
-                    px: [1],
-                }} 
+        <Sider 
+			collapsible
+			collapsed={collapsed}
+			onCollapse={(value: boolean) => setCollapsed(value)}
+		>
+			<div
+                style={{
+                    height: 32,
+                    margin: 16,
+                    background: 'rgba(255, 255, 255, 0.2)',
+                }}
             />
-            <Divider />
-            <List>
-                {
-                    menuItems.map(
-                        (menu, index) => (
-                            <ListItem key={index} disablePadding>
-                                 <ListItemButton>
-                                    <Link to={menu.url}>
-                                        <ListItemText primary={menu.name} />
-                                    </Link>
-                                 </ListItemButton>
-                            </ListItem>
-                        )
-                    )
-                }
-            </List>
-        </Drawer>
+			<Menu 
+				theme="dark"
+				mode="inline"
+				defaultSelectedKeys={['0']}
+				items={menu}
+			/>
+		</Sider>
     )
 }
 

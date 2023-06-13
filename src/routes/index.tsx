@@ -1,6 +1,6 @@
 import { RouteObject } from "react-router-dom";
 import Dashboard from "../modules/Dashboard";
-import Layout from "../components/Layout";
+import Layout from "../components/AppLayout";
 import Category from "../modules/Category";
 import Department from "../modules/Department";
 import Login from "../modules/Auth/login";
