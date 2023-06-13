@@ -4,10 +4,11 @@ import Layout from "../components/AppLayout";
 import Category from "../modules/Category";
 import Department from "../modules/Department";
 import Login from "../modules/Auth/login";
+import NotFound from "../components/NotFound";
 
 const routes: RouteObject[] = [
     {
-        path: '*',
+        path: '/',
         element: <Layout/>,
         children: [
             {
@@ -32,7 +33,11 @@ const routes: RouteObject[] = [
                 element: <Login />
             }
         ]
-    }
+    },
+	{
+		path: '*',
+		element: <NotFound/>
+	}
 ]
 
 export default routes
