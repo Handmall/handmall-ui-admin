@@ -1,10 +1,10 @@
 import { RouteObject } from "react-router-dom";
 import Dashboard from "@modules/Dashboard";
 import Layout from "@components/AppLayout";
-import Category from "@modules/Category";
-import Department from "@modules/Department";
 import Login from "@modules/Auth/login";
 import NotFound from "@components/NotFound";
+import categoryRoutes from "./category";
+import departmentRoutes from "./department";
 
 const routes: RouteObject[] = [
     {
@@ -13,15 +13,15 @@ const routes: RouteObject[] = [
         children: [
             {
                 index: true,
-                element: <Dashboard/>
+                element: <Dashboard />
             },
             {
                 path: 'category',
-                element: <Category/>
+				children: categoryRoutes
             },
             {
                 path: 'department',
-                element: <Department/>
+                children: departmentRoutes
             }
         ],
     },
@@ -36,7 +36,7 @@ const routes: RouteObject[] = [
     },
 	{
 		path: '*',
-		element: <NotFound/>
+		element: <NotFound />
 	}
 ]
 
