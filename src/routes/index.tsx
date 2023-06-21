@@ -7,37 +7,37 @@ import categoryRoutes from "./category";
 import departmentRoutes from "./department";
 
 const routes: RouteObject[] = [
-    {
-        path: '/',
-        element: <Layout/>,
-        children: [
-            {
-                index: true,
-                element: <Dashboard />
-            },
-            {
-                path: 'category',
-				children: categoryRoutes
-            },
-            {
-                path: 'department',
-                children: departmentRoutes
-            }
-        ],
-    },
-    {
-        path: 'auth/*',
-        children: [
-            {
-                path: 'login',
-                element: <Login />
-            }
-        ]
-    },
 	{
-		path: '*',
-		element: <NotFound />
-	}
-]
+		path: "/",
+		element: <Layout />,
+		children: [
+			{
+				index: true,
+				element: <Dashboard />,
+			},
+			{
+				path: "category",
+				children: categoryRoutes,
+			},
+			{
+				path: "department",
+				children: departmentRoutes,
+			},
+		],
+	},
+	{
+		path: "auth/*",
+		children: [
+			{
+				path: "login",
+				element: <Login />,
+			},
+		],
+	},
+	{
+		path: "*",
+		element: <NotFound />,
+	},
+];
 
-export default routes
+export default routes;
