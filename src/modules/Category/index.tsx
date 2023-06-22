@@ -21,6 +21,11 @@ const Category = () => {
 			key: "description",
 		},
 		{
+			title: "Department",
+			dataIndex: "departmentName",
+			key: "departmentName",
+		},
+		{
 			title: "Action",
 			key: "action",
 			render: (_, record: CategoryResponse) => (
