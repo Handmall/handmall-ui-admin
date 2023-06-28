@@ -1,23 +1,28 @@
-import { Alert, Form, Space, Input, Button } from "antd"
-import { useState } from "react"
-import { LoginRequest } from "../../types/auth/LoginRequest"
-
+import { Alert, Form, Space, Input, Button } from "antd";
+import { useEffect } from "react";
+import { LoginRequest } from "../../types/auth/LoginRequest";
+import { useLoginMutation } from "@/services/auth.service";
 
 const Login = () => {
-	const [authError, setAuthError] = useState(false)
+	const [login, { isLoading, isSuccess, error, isError }] =
+		useLoginMutation();
+
+	useEffect(() => {
+		isSuccess ? console.log("success") : console.log(error);
+	}, [isLoading]);
 
 	const onLogin = (values: LoginRequest) => {
-        console.log(values)
-    }
+		login(values);
+	};
 
-    return (
-        <Space
+	return (
+		<Space
 			direction="horizontal"
 			style={{
-				width: '100%',
-				height: '100vh',
-				justifyContent: 'center',
-				backgroundColor: 'white',
+				width: "100%",
+				height: "100vh",
+				justifyContent: "center",
+				backgroundColor: "white",
 			}}
 		>
 			<Form
@@ -28,23 +33,23 @@ const Login = () => {
 				onFinish={onLogin}
 				autoComplete="off"
 			>
-				{authError ? (
-                    <Alert
-                        message="Username or password is incorrect"
-                        type="warning"
-                        closable
-                        style={{
-                            marginBottom: '20px',
-                        }}
-                    />
-                ) : null}
+				{isError ? (
+					<Alert
+						message="Email or password is incorrect"
+						type="warning"
+						closable
+						style={{
+							marginBottom: "20px",
+						}}
+					/>
+				) : null}
 				<Form.Item
-					label="Username"
-					name="username"
+					label="Email"
+					name="email"
 					rules={[
 						{
 							required: true,
-							message: 'Please input your username!',
+							message: "Please input your email!",
 						},
 					]}
 				>
@@ -56,7 +61,7 @@ const Login = () => {
 					rules={[
 						{
 							required: true,
-							message: 'Please input your password!',
+							message: "Please input your password!",
 						},
 					]}
 				>
@@ -68,8 +73,8 @@ const Login = () => {
 					</Button>
 				</Form.Item>
 			</Form>
-        </Space>
-    )
-}
+		</Space>
+	);
+};
 
-export default Login
+export default Login;
