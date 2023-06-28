@@ -2,13 +2,17 @@ import { Alert, Form, Space, Input, Button } from "antd";
 import { useEffect } from "react";
 import { LoginRequest } from "../../types/auth/LoginRequest";
 import { useLoginMutation } from "@/services/auth.service";
+import Cookies from "js-cookie";
 
 const Login = () => {
-	const [login, { isLoading, isSuccess, error, isError }] =
+	const [login, { isLoading, isSuccess, error, isError, data }] =
 		useLoginMutation();
 
 	useEffect(() => {
-		isSuccess ? console.log("success") : console.log(error);
+		if (isSuccess) {
+			console.log(data);
+			Cookies.set("user", JSON.stringify(data));
+		}
 	}, [isLoading]);
 
 	const onLogin = (values: LoginRequest) => {
