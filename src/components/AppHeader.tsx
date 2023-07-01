@@ -1,28 +1,30 @@
-import { Layout, Row, Col, Dropdown, Avatar, MenuProps } from 'antd'
-import UserOutlined from '@ant-design/icons/lib/icons/UserOutlined'
+import { Layout, Row, Col, Dropdown, Avatar, MenuProps } from "antd";
+import UserOutlined from "@ant-design/icons/lib/icons/UserOutlined";
+import { useLogout } from "@/hooks/useLogout";
 
-const { Header } = Layout
+const { Header } = Layout;
 
 const AppHeader = () => {
+	const { logout } = useLogout();
 
-    const items: MenuProps['items'] = [
-        {
-            key: '1',
-            label: <a>Logout</a>,
-        },
-    ]
+	const items: MenuProps["items"] = [
+		{
+			key: "1",
+			label: <a onClick={() => logout()}>Logout</a>,
+		},
+	];
 
-    return (
-		<Header style={{ padding: 0, background: '#fff' }}>
+	return (
+		<Header style={{ padding: 0, background: "#fff" }}>
 			<Row>
 				<Col span={1} offset={22}>
-                    <Dropdown menu={{ items }} placement="bottomRight">
+					<Dropdown menu={{ items }} placement="bottomRight">
 						<Avatar icon={<UserOutlined />} />
-                    </Dropdown>
-                </Col>
+					</Dropdown>
+				</Col>
 			</Row>
 		</Header>
-    )
-}
+	);
+};
 
-export default AppHeader
+export default AppHeader;

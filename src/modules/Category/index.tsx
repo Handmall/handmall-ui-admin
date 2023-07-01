@@ -39,8 +39,8 @@ const Category = () => {
 						Edit {record.name}
 					</a>
 					<Popconfirm
-						title="Delete the company"
-						description="Are you sure to delete this company?"
+						title="Delete the category"
+						description="Are you sure to delete this category?"
 						okText="Yes"
 						cancelText="No"
 						onConfirm={() => console.log(record?.id)}
@@ -67,7 +67,11 @@ const Category = () => {
 					Add new
 				</Button>
 				{categories ? (
-					<Table columns={columns} dataSource={categories} />
+					<Table
+						columns={columns}
+						dataSource={categories}
+						rowKey={"id"}
+					/>
 				) : (
 					<Empty />
 				)}

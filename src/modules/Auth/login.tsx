@@ -1,17 +1,23 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Alert, Form, Space, Input, Button } from "antd";
 import { useEffect } from "react";
 import { LoginRequest } from "../../types/auth/LoginRequest";
 import { useLoginMutation } from "@/services/auth.service";
 import Cookies from "js-cookie";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+	const navigate = useNavigate();
 	const [login, { isLoading, isSuccess, error, isError, data }] =
 		useLoginMutation();
 
 	useEffect(() => {
 		if (isSuccess) {
-			console.log(data);
 			Cookies.set("user", JSON.stringify(data));
+			navigate("/");
+		}
+		if (isError) {
+			console.log(error);
 		}
 	}, [isLoading]);
 

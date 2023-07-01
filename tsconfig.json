@@ -19,7 +19,8 @@
             "@routes/*": ["src/routes/*"],
             "@store/*": ["src/store/*"],
             "@types/*": ["src/types/*"],
-            "@services/*": ["src/services-axios/*"]
+            "@services/*": ["src/services/*"],
+            "@hooks/*": ["src/hooks/*"]
         },
 
         /* Bundler mode */
