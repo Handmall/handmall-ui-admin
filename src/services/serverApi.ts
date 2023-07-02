@@ -9,8 +9,8 @@ export const serverApi = createApi({
             const user = userCookie ? JSON.parse(userCookie) : null;
 
             if (
-                (user && endpoint !== "refresh-token") ||
-                endpoint !== "authenticate"
+                (user && endpoint !== "login") ||
+                endpoint !== "auth/refresh-token"
             ) {
                 headers.set("Authorization", `Bearer ${user?.accessToken}`);
             }
