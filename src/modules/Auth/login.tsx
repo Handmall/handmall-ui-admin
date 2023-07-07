@@ -3,8 +3,8 @@ import { Alert, Form, Space, Input, Button } from "antd";
 import { useEffect } from "react";
 import { LoginRequest } from "../../types/auth/LoginRequest";
 import { useLoginMutation } from "@/services/auth.service";
-import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
+import { setToken } from "@/utils/auth";
 
 const Login = () => {
 	const navigate = useNavigate();
@@ -12,8 +12,8 @@ const Login = () => {
 		useLoginMutation();
 
 	useEffect(() => {
-		if (isSuccess) {
-			Cookies.set("user", JSON.stringify(data));
+		if (isSuccess && data) {
+			setToken(data);
 			navigate("/");
 		}
 		if (isError) {

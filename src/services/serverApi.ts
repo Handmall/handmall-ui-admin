@@ -1,18 +1,14 @@
+import { getToken } from "@/utils/auth";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import Cookies from "js-cookie";
 
 export const serverApi = createApi({
     baseQuery: fetchBaseQuery({
         baseUrl: "http://localhost:8080/api/v1",
         prepareHeaders: (headers, { endpoint }) => {
-            const userCookie = Cookies.get("user");
-            const user = userCookie ? JSON.parse(userCookie) : null;
-
-            if (
-                (user && endpoint !== "login") ||
-                endpoint !== "auth/refresh-token"
-            ) {
-                headers.set("Authorization", `Bearer ${user?.accessToken}`);
+            const token = getToken();
+            console.log(endpoint);
+            if (token && endpoint !== "login") {
+                headers.set("Authorization", `Bearer ${token}`);
             }
             return headers;
         },

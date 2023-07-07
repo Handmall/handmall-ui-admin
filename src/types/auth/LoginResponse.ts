@@ -1,7 +1,8 @@
 export interface LoginResponse {
-    accessToken: string
-    refreshToken: string
-    accessExpireTime: string
-    refreshExpireTime: string
-    role: string
+    accessToken: string;
+    refreshToken: string;
+    jwtExpiredAt: number;
+    refreshExpiredAt: number;
+    role: string;
+    username: string;
 }
