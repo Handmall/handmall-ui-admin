@@ -5,6 +5,7 @@ import Login from "@modules/Auth/login";
 import NotFound from "@components/NotFound";
 import categoryRoutes from "./category";
 import departmentRoutes from "./department";
+import vendorRoutes from "./vendor";
 
 const routes: RouteObject[] = [
 	{
@@ -22,6 +23,10 @@ const routes: RouteObject[] = [
 			{
 				path: "department",
 				children: departmentRoutes,
+			},
+			{
+				path: "vendor",
+				children: vendorRoutes,
 			},
 		],
 	},

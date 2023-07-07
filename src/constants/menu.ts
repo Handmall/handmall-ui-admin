@@ -1,22 +1,27 @@
-import { Menu } from '../types/Menu'
-import { UserOutlined } from '@ant-design/icons'
+import { Menu } from "../types/Menu";
+import { UserOutlined } from "@ant-design/icons";
 
 const menuItems: Menu[] = [
     {
-        name: 'Dashboard',
+        name: "Dashboard",
         icon: UserOutlined,
-        url: '/'
+        url: "/",
     },
     {
-        name: 'Category',
+        name: "Category",
         icon: UserOutlined,
-        url: '/category'
+        url: "/category",
     },
     {
-        name: 'Department',
+        name: "Department",
         icon: UserOutlined,
-        url: '/department'
-    }
-]
+        url: "/department",
+    },
+    {
+        name: "Vendor",
+        icon: UserOutlined,
+        url: "/vendor",
+    },
+];
 
-export default menuItems
+export default menuItems;

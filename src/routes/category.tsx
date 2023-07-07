@@ -5,18 +5,18 @@ import { RouteObject } from "react-router-dom";
 
 const categoryRoutes: RouteObject[] = [
 	{
-		path: '',
+		path: "",
 		index: true,
-		element: <Category />
+		element: <Category />,
 	},
 	{
-		path: 'create',
-		element: <CategoryCreate />
+		path: "create",
+		element: <CategoryCreate />,
 	},
 	{
-		path: 'edit',
-		element: <CategoryEdit />
-	}
-]
+		path: "edit",
+		element: <CategoryEdit />,
+	},
+];
 
-export default categoryRoutes
+export default categoryRoutes;
