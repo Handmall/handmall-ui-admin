@@ -20,7 +20,7 @@
             "@store/*": ["src/store/*"],
             "@types/*": ["src/types/*"],
             "@services/*": ["src/services/*"],
-            "@hooks/*": ["src/hooks/*"]
+            "@hooks/*": ["src/hooks/*"],
         },
 
         /* Bundler mode */
@@ -38,5 +38,5 @@
         "noFallthroughCasesInSwitch": true
     },
     "include": ["src"],
-    "references": [{ "path": "./tsconfig.node.json" }]
+    "references": [{ "path": "./tsconfig.node.json" }],
 }

@@ -1,28 +1,18 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import { Alert, Form, Space, Input, Button } from "antd";
-import { useEffect } from "react";
-import { LoginRequest } from "../../types/auth/LoginRequest";
-import { useLoginMutation } from "@/services/auth.service";
+import { Form, Space, Input, Button } from "antd";
+import { LoginRequest } from "../../types/auth/LoginRequest.ts";
 import { useNavigate } from "react-router-dom";
-import { setToken } from "@/utils/auth";
+import { useLogin } from "@/hooks/useLogin.ts";
 
 const Login = () => {
+	const { login } = useLogin();
 	const navigate = useNavigate();
-	const [login, { isLoading, isSuccess, error, isError, data }] =
-		useLoginMutation();
-
-	useEffect(() => {
-		if (isSuccess && data) {
-			setToken(data);
-			navigate("/");
-		}
-		if (isError) {
-			console.log(error);
-		}
-	}, [isLoading]);
 
 	const onLogin = (values: LoginRequest) => {
-		login(values);
+		login(values.username, values.password).then((res) => {
+			if (res) {
+				navigate("/admin/dashboard");
+			}
+		});
 	};
 
 	return (
@@ -43,23 +33,13 @@ const Login = () => {
 				onFinish={onLogin}
 				autoComplete="off"
 			>
-				{isError ? (
-					<Alert
-						message="Email or password is incorrect"
-						type="warning"
-						closable
-						style={{
-							marginBottom: "20px",
-						}}
-					/>
-				) : null}
 				<Form.Item
-					label="Email"
-					name="email"
+					label="Username"
+					name="username"
 					rules={[
 						{
 							required: true,
-							message: "Please input your email!",
+							message: "Please input your username!",
 						},
 					]}
 				>

@@ -1,13 +1,27 @@
-import { serverApi } from "./serverApi";
-import { CategoryResponse } from "@/types/category/CategoryResponse";
+import http from "@services/http-common.ts";
+import { CategoryResponse } from "@/types/category/CategoryResponse.ts";
+import { CategoryRequest } from "@/types/category/CategoryRequest.ts";
 
-export const categoryApi = serverApi.injectEndpoints({
-    endpoints: (builder) => ({
-        getCategories: builder.query<CategoryResponse[], number>({
-            query: () => "/category/getAll",
-        }),
-    }),
-    overrideExisting: false,
-});
+class CategoryService {
+    getAll() {
+        return http.get<Array<CategoryResponse>>("/category/getAll");
+    }
 
-export const { useGetCategoriesQuery } = categoryApi;
+    getById(id: number) {
+        return http.get<CategoryResponse>(`/category/get/${id}`);
+    }
+
+    addNew(data: CategoryRequest) {
+        return http.post("/category/addNew", data);
+    }
+
+    delete(id: number) {
+        return http.delete(`/category/delete/${id}`);
+    }
+
+    update(data: CategoryRequest, id: number) {
+        return http.put(`/category/update/${id}`, data);
+    }
+}
+
+export default new CategoryService();

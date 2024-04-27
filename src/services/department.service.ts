@@ -1,24 +1,27 @@
-import { DepartmentResponse } from "@/types/department/DepartmentResponse";
-import { serverApi } from "./serverApi";
-import { DepartmentRequest } from "@/types/department/DepartmentRequest";
+import { DepartmentRequest } from "@/types/department/DepartmentRequest.ts";
+import { DepartmentResponse } from "@/types/department/DepartmentResponse.ts";
+import http from "@services/http-common.ts";
 
-export const departmentApi = serverApi.injectEndpoints({
-    endpoints: (builder) => ({
-        getDepartments: builder.query<DepartmentResponse[], number>({
-            query: () => "/department/getAll",
-        }),
-        addDepartment: builder.mutation<DepartmentResponse, DepartmentRequest>({
-            query: (data) => {
-                return {
-                    url: "/department/addNew",
-                    method: "POST",
-                    body: data,
-                };
-            },
-        }),
-    }),
-    overrideExisting: false,
-});
+class DepartmentService {
+    getAll() {
+        return http.get<Array<DepartmentResponse>>("/department/getAll");
+    }
 
-export const { useGetDepartmentsQuery, useAddDepartmentMutation } =
-    departmentApi;
+    getById(id: number) {
+        return http.get<DepartmentResponse>(`/department/get/${id}`);
+    }
+
+    addNew(data: DepartmentRequest) {
+        return http.post("/department/addNew", data);
+    }
+
+    delete(id: number) {
+        return http.delete(`/department/delete/${id}`);
+    }
+
+    update(data: DepartmentRequest, id: number) {
+        return http.put(`/department/update/${id}`, data);
+    }
+}
+
+export default new DepartmentService();

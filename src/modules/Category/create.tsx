@@ -1,4 +1,3 @@
-import { useGetDepartmentsQuery } from "@/services/department.service";
 import { Button, Form, Input, Select, Space } from "antd";
 import { useNavigate } from "react-router-dom";
 
