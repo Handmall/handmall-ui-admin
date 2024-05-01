@@ -6,18 +6,20 @@ export class AuthService {
     public constructor(url: string) {
         this.instance = axios.create({
             baseURL: url,
+            withCredentials: true,
             timeout: 30000,
             timeoutErrorMessage: "Time out!",
         });
     }
 
-    login = (identifier: string, password: string) => {
+    login = (username: string, password: string) => {
         return this.instance
             .post("/authenticate", {
-                identifier,
+                username,
                 password,
             })
             .then((res) => {
+                console.log(res);
                 if (res.status === 200) {
                     return {
                         username: res.data.username,
@@ -49,7 +51,8 @@ export class AuthService {
             .then((res) => {
                 if (res.status === 200) {
                     return {
-                        email: res.data.email,
+                        username: res.data.username,
+                        role: res.data.role,
                         accessToken: res.data.accessToken,
                         refreshToken: res.data.refreshToken,
                         jwtExpiredAt: res.data.jwtExpiredAt,
