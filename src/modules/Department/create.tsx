@@ -30,7 +30,7 @@ const DepartmentCreate = () => {
 		if (mutation.isSuccess) {
 			success();
 			setTimeout(() => {
-				navigate("/admin/department");
+				navigate("/department");
 			}, 2500);
 		}
 	}, [mutation]);

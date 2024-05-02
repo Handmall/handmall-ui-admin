@@ -43,7 +43,7 @@ const CategoryCreate = () => {
 		if (mutation.isSuccess) {
 			success();
 			setTimeout(() => {
-				navigate("/admin/category");
+				navigate("/category");
 			}, 2500);
 		}
 	}, [mutation]);
