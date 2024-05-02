@@ -1,11 +1,11 @@
 import { RouteObject } from "react-router-dom";
-import Dashboard from "@modules/Dashboard";
-import Layout from "@components/AppLayout";
-import Login from "@modules/Auth/login";
-import NotFound from "@components/NotFound";
-import categoryRoutes from "./category";
-import departmentRoutes from "./department";
-import vendorRoutes from "./vendor";
+import Dashboard from "@modules/Dashboard/index.tsx";
+import Layout from "@components/AppLayout.tsx";
+import Login from "@modules/Auth/login.tsx";
+import NotFound from "@components/NotFound.tsx";
+import categoryRoutes from "./category.tsx";
+import departmentRoutes from "./department.tsx";
+import vendorRoutes from "./vendor.tsx";
 
 const routes: RouteObject[] = [
 	{

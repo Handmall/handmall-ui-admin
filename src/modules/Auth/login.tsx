@@ -10,7 +10,7 @@ const Login = () => {
 	const onLogin = (values: LoginRequest) => {
 		login(values.username, values.password).then((res) => {
 			if (res) {
-				navigate("/admin/dashboard");
+				navigate("/");
 			}
 		});
 	};
