@@ -5,18 +5,18 @@ import { RouteObject } from "react-router-dom";
 
 const departmentRoutes: RouteObject[] = [
 	{
-		path: '',
+		path: "",
 		index: true,
-		element: <Department />
+		element: <Department />,
 	},
 	{
-		path: 'create',
-		element: <DepartmentCreate />
+		path: "create",
+		element: <DepartmentCreate />,
 	},
 	{
-		path: 'edit',
-		element: <DepartmentEdit />
-	}
-]
+		path: "edit/:departmentId",
+		element: <DepartmentEdit />,
+	},
+];
 
-export default departmentRoutes
+export default departmentRoutes;

@@ -14,7 +14,7 @@ const categoryRoutes: RouteObject[] = [
 		element: <CategoryCreate />,
 	},
 	{
-		path: "edit",
+		path: "edit/:categoryId",
 		element: <CategoryEdit />,
 	},
 ];
