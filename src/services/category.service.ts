@@ -1,6 +1,7 @@
 import http from "@services/http-common.ts";
 import { CategoryResponse } from "@/types/category/CategoryResponse.ts";
 import { CategoryRequest } from "@/types/category/CategoryRequest.ts";
+import { CategoryDetailResponse } from "@/types/category/CategoryDetailResponse.ts";
 
 class CategoryService {
     getAll() {
@@ -8,7 +9,7 @@ class CategoryService {
     }
 
     getById(id: number) {
-        return http.get<CategoryResponse>(`/category/get/${id}`);
+        return http.get<CategoryDetailResponse>(`/category/get/${id}`);
     }
 
     addNew(data: CategoryRequest) {
