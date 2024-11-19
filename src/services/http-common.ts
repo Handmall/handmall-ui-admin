@@ -10,7 +10,7 @@ interface Params {
 }
 
 const config: Params = {
-    baseURL: "http://localhost:8080/api/v1",
+    baseURL: import.meta.env.VITE_BE_API,
     headers: getAuthorizationHeader(),
     timeout: 30000,
     withCredentials: true,

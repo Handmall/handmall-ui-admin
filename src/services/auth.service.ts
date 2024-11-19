@@ -66,4 +66,4 @@ export class AuthService {
     };
 }
 
-export const authService = new AuthService("http://localhost:8080/api/v1/auth");
+export const authService = new AuthService(import.meta.env.VITE_BE_API + "v1/auth");

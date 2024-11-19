@@ -6,6 +6,7 @@
     "type": "module",
     "scripts": {
         "dev": "vite",
+        "contabo": "NODE_ENV=contabo vite",
         "build": "tsc && vite build",
         "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
         "preview": "vite preview"
@@ -14,6 +15,7 @@
         "@tanstack/react-query": "^5.56.2",
         "antd": "^5.20.6",
         "axios": "^1.7.7",
+        "handmall-ui-admin": "file:",
         "js-cookie": "^3.0.5",
         "react": "18.2.0",
         "react-dom": "18.2.0",
