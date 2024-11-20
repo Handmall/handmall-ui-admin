@@ -13,14 +13,14 @@ class VendorService {
     }
 
     addNew(data: VendorRequest) {
-        return http.post("vendor/addNew", data) 
+        return http.post("vendor/addNew", data);
     }
 
     update(data: VendorRequest, id: number) {
-        return http.put(`vendor/update/${id}`, data)
+        return http.put(`vendor/update/${id}`, data);
     }
 
     delete(id: number) {
-        return http.delete(`vendor/delete/${id}`)
+        return http.delete(`vendor/delete/${id}`);
     }
 }
