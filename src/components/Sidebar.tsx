@@ -10,7 +10,6 @@ const Sidebar = () => {
 	const [pathId, setPathId] = useState(0);
 	const [collapsed, setCollapsed] = useState(false);
 	
-
 	const menu: MenuProps["items"] = menuItems.map((item, index) => {
 		return {
 			key: index,

@@ -10,7 +10,8 @@ const Login = () => {
 	const onLogin = (values: LoginRequest) => {
 		login(values.username, values.password).then((res) => {
 			if (res) {
-				navigate("/");
+				// navigate("/");
+				window.location.href = "/";
 			}
 		});
 	};

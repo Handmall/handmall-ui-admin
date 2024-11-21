@@ -11,7 +11,8 @@ import { getToken } from "../utils/auth.ts";
 const routes: RouteObject[] = [
 	{
 		path: "/",
-		element: getToken() ? <Layout /> : <Navigate to="auth/login" />,
+		element: getToken() ? <Layout /> : <Navigate to="auth/login"/>,
+		// element: <Layout />,
 		children: [
 			{
 				index: true,
@@ -36,7 +37,7 @@ const routes: RouteObject[] = [
 		children: [
 			{
 				path: "login",
-				element: <Login />,
+				element: getToken() ? <Navigate to="/" /> : <Login />,
 			},
 		],
 	},
