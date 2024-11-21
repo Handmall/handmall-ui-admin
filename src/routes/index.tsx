@@ -1,4 +1,4 @@
-import { RouteObject } from "react-router-dom";
+import { Navigate, RouteObject } from "react-router-dom";
 import Dashboard from "@modules/Dashboard/index.tsx";
 import Layout from "@components/AppLayout.tsx";
 import Login from "@modules/Auth/login.tsx";
@@ -6,11 +6,12 @@ import NotFound from "@components/NotFound.tsx";
 import categoryRoutes from "./category.tsx";
 import departmentRoutes from "./department.tsx";
 import vendorRoutes from "./vendor.tsx";
+import { getToken } from "../utils/auth.ts";
 
 const routes: RouteObject[] = [
 	{
 		path: "/",
-		element: <Layout />,
+		element: getToken() ? <Layout /> : <Navigate to="auth/login" />,
 		children: [
 			{
 				index: true,

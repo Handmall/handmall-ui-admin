@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { useEffect } from "react";
 import vendorService from "@/services/department.service.ts";
-import { VendorResponse } from "@/types/vendor/VendorResponseType";
+import { VendorResponse } from "@/types/vendor/VendorResponseType.ts";
 
 const Vendor = () => {
 
