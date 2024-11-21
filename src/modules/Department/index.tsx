@@ -23,6 +23,7 @@ const Department = () => {
 	} = useQuery({
 		queryKey: ["departments"],
 		queryFn: () => fetchDepartments(),
+		staleTime: 10000000
 	});
 
 	const success = () => {

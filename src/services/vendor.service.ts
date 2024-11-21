@@ -24,3 +24,5 @@ class VendorService {
         return http.delete(`vendor/delete/${id}`);
     }
 }
+
+export default new VendorService();

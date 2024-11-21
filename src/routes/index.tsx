@@ -11,8 +11,7 @@ import { getToken } from "../utils/auth.ts";
 const routes: RouteObject[] = [
 	{
 		path: "/",
-		element: getToken() ? <Layout /> : <Navigate to="auth/login"/>,
-		// element: <Layout />,
+		element: getToken() ? <Layout /> : <Navigate to="auth/login" />,
 		children: [
 			{
 				index: true,
