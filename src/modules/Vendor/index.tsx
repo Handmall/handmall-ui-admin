@@ -65,7 +65,12 @@ const Vendor = () => {
 		},
 		{
 			title: "Description",
-			key: "description",
+			dataIndex: "description",
+			key: "desciption",
+		},
+		{
+			title: "Action",
+			key: "action",
 			render: (_, record: VendorResponse) => (
 				<Space size="middle">
 					<a

@@ -35,7 +35,7 @@ const DepartmentEdit = () => {
 		isError: isloadError,
 		error: loadError,
 	} = useQuery({
-		queryKey: ["department"],
+		queryKey: ["department", departmentIdFromPath],
 		queryFn: () => fetchDepartment(),
 		enabled: departmentIdFromPath != 0,
 	});
@@ -47,6 +47,7 @@ const DepartmentEdit = () => {
 
 	const updateDepartmentFun = (values: DepartmentRequest) => {
 		mutation.mutate(values);
+	
 	};
 
 	useEffect(() => {
@@ -54,6 +55,7 @@ const DepartmentEdit = () => {
 			success();
 			setTimeout(() => {
 				navigate("/department");
+				window.location.reload();
 			}, 2500);
 		}
 	}, [mutation]);
