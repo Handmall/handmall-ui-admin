@@ -7,40 +7,38 @@ import { useNavigate } from "react-router-dom"
 
 function VendorCreate() {
 
-    const navigate = useNavigate();
-    const [messageApi, contextHolder] = message.useMessage();
+	const navigate = useNavigate();
+	const [messageApi, contextHolder] = message.useMessage();
 
-    const success = () => {
-        messageApi.open({
-            type: "success",
-            content: "Vendor added",
-        });
-        setTimeout(messageApi.destroy, 2000);
-    };
+	const success = () => {
+		messageApi.open({
+			type: "success",
+			content: "Vendor added",
+		});
+		setTimeout(messageApi.destroy, 2000);
+	};
 
-    const mutation = useMutation({
-        mutationFn: (newVendor: VendorRequest) =>
-            vendorService.addNew(newVendor)
-    });
+	const mutation = useMutation({
+		mutationFn: (newVendor: VendorRequest) =>
+			vendorService.addNew(newVendor)
+	});
 
-    const createVendor = (values: VendorRequest) => {
-        mutation.mutate(values);
+	const createVendor = (values: VendorRequest) => {
+		mutation.mutate(values);
+	}
 
-		console.log(values)
-    }
-
-    useEffect(() => {
-        if (mutation.isSuccess) {
-            success();
-            setTimeout(() => {
-                navigate("/vendor");
-            }, 2500);
-        }
-    }, [mutation]);
-    return (
-        <div>
-            {contextHolder}
-            <Space
+	useEffect(() => {
+		if (mutation.isSuccess) {
+			success();
+			setTimeout(() => {
+				navigate("/vendor");
+			}, 2500);
+		}
+	}, [mutation]);
+	return (
+		<div>
+			{contextHolder}
+			<Space
 				direction="vertical"
 				style={{ display: "flex" }}
 				size={"large"}
@@ -55,7 +53,7 @@ function VendorCreate() {
 						}}
 					/>
 				) : null}
-                <h1 style={{ textAlign: "center" }}>Create a vendor</h1>
+				<h1 style={{ textAlign: "center" }}>Create a vendor</h1>
 				<Form
 					name="vendor"
 					labelCol={{ span: 8 }}
@@ -63,7 +61,7 @@ function VendorCreate() {
 					style={{ maxWidth: 600 }}
 					onFinish={createVendor}
 				>
-                <Form.Item
+					<Form.Item
 						label="Vendor name"
 						name="name"
 						rules={[
@@ -76,24 +74,24 @@ function VendorCreate() {
 						<Input />
 					</Form.Item>
 
-                    <Form.Item
-                    label="Phone number"
-                    name="phoneNumber"
-                    rules={[
-                        {
-                            required: true,
-                            message: "Please input phone number!"
-                        }
-                    ]}>
-                        <Input/>
-                    </Form.Item>
+					<Form.Item
+						label="Phone number"
+						name="phoneNumber"
+						rules={[
+							{
+								required: true,
+								message: "Please input phone number!"
+							}
+						]}>
+						<Input />
+					</Form.Item>
 
 
 					<Form.Item label="Vendor description" name="description">
 						<Input />
 					</Form.Item>
 
-                    <Form.Item>
+					<Form.Item>
 						<Space
 							style={{
 								display: "flex",
@@ -114,8 +112,8 @@ function VendorCreate() {
 					</Form.Item>
 				</Form>
 			</Space>
-        </div>
-    )
+		</div>
+	)
 }
 
 export default VendorCreate

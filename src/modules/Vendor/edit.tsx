@@ -1,5 +1,5 @@
 import vendorService from '@/services/vendor.service';
-import { VendorRequest } from '@/types/vendor/VendorRequestType';
+import { VendorDetailResponse } from '@/types/vendor/VendorDetailResponse.ts';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { Alert, Input, message, Space, Form, Button } from 'antd';
 import { useEffect, useState } from 'react'
@@ -41,12 +41,13 @@ function VendorEdit() {
     });
 
     const mutation = useMutation({
-        mutationFn: (updateVendor: VendorRequest) =>
+        mutationFn: (updateVendor: VendorDetailResponse) =>
             vendorService.update(updateVendor, vendorIdFromPath),
     })
 
-    const updateVendorFun = (values: VendorRequest) => {
+    const updateVendorFun = (values: VendorDetailResponse) => {
         mutation.mutate(values)
+        
     }
 
     useEffect(() => {
@@ -54,6 +55,7 @@ function VendorEdit() {
             success();
             setTimeout(() => {
                 navigate("/vendor");
+                window.location.reload();
             }, 2500);
         }
     }, [mutation]);
@@ -100,7 +102,7 @@ function VendorEdit() {
                                 <Input />
                             </Form.Item>
 
-                            {/* <Form.Item label="First name" name="firstName">
+                            <Form.Item label="First name" name="firstName">
                                 <Input />
                             </Form.Item>
 
@@ -110,7 +112,7 @@ function VendorEdit() {
 
                             <Form.Item label="Email" name="email">
                                 <Input />
-                            </Form.Item> */}
+                            </Form.Item>
 
                             <Form.Item
                                 label="Phone number"

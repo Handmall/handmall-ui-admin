@@ -1,3 +1,4 @@
+import { VendorDetailResponse } from "@/types/vendor/VendorDetailResponse";
 import { VendorRequest } from "@/types/vendor/VendorRequestType.ts";
 import { VendorResponse } from "@/types/vendor/VendorResponseType.ts";
 import http from "@services/http-common.ts";
@@ -16,7 +17,7 @@ class VendorService {
         return http.post("vendor/addNew", data);
     }
 
-    update(data: VendorRequest, id: number) {
+    update(data: VendorDetailResponse, id: number) {
         return http.put(`vendor/update/${id}`, data);
     }
 

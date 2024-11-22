@@ -98,7 +98,6 @@ const Vendor = () => {
 		},
 	]
 
-
 	return (
 		<div>
 			{contextHolder}

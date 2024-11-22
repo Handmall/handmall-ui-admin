@@ -112,27 +112,29 @@ const CategoryEdit = () => {
 							<Form.Item label="Category name" name="name">
 								<Input />
 							</Form.Item>
-				
+
 							<Form.Item
 								label="Category description"
 								name="description"
 							>
 								<Input />
 							</Form.Item>
-							{departments ? (
-						<Form.Item label="Department" name="departmentId">
-							<Select
-								showSearch
-								placeholder="Select a department"
-							>
-								{departments.map((department, index) => (
-									<Option key={index} value={department.id}>
-										{department.name}
-									</Option>
-								))}
-							</Select>
-						</Form.Item>
-					) : null}
+
+							{departments && (
+								<Form.Item label="Department" name="departmentId">
+									<Select
+										showSearch
+										placeholder="Select a department"
+									>
+										{departments.map((department, index) => (
+											<Option key={index} value={department.id}>
+												{department.name}
+											</Option>
+										))}
+									</Select>
+								</Form.Item>
+							)}
+
 							<Form.Item>
 								<Space
 									direction="horizontal"
