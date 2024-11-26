@@ -16,6 +16,7 @@ const Department = () => {
 		return data;
 	};
 
+	// cache meselesine baxariq sonra. eger burda elave edirikse time`nan, create ve update edende key`e gore cache update etmek lazimdi.
 	const {
 		isError,
 		error,
@@ -23,6 +24,7 @@ const Department = () => {
 	} = useQuery({
 		queryKey: ["departments"],
 		queryFn: () => fetchDepartments(),
+		staleTime: 10000000
 	});
 
 	const success = () => {

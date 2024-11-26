@@ -1,16 +1,14 @@
 import { Form, Space, Input, Button } from "antd";
-import { LoginRequest } from "../../types/auth/LoginRequest.ts";
-import { useNavigate } from "react-router-dom";
+import { LoginRequest } from "@/types/auth/LoginRequest.ts";
 import { useLogin } from "@/hooks/useLogin.ts";
 
 const Login = () => {
 	const { login } = useLogin();
-	const navigate = useNavigate();
 
 	const onLogin = (values: LoginRequest) => {
 		login(values.username, values.password).then((res) => {
 			if (res) {
-				navigate("/");
+				window.location.href = "/";
 			}
 		});
 	};

@@ -1,10 +1,12 @@
-import departmentService from "@/services/department.service";
+import departmentService from "@/services/department.service.ts";
 import { CategoryRequest } from "@/types/category/CategoryRequest.ts";
 import categoryService from "@services/category.service.ts";
 import { useMutation, useQuery } from "@tanstack/react-query";
-import { Alert, Button, Form, Input, message, Space } from "antd";
+import { Alert, Button, Form, Input, message, Select, Space } from "antd";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+
+const { Option } = Select;
 
 const CategoryEdit = () => {
 	const navigate = useNavigate();
@@ -41,7 +43,7 @@ const CategoryEdit = () => {
 		isError: isloadError,
 		error: loadError,
 	} = useQuery({
-		queryKey: ["category"],
+		queryKey: ["category", categoryIdFromPath],
 		queryFn: () => fetchCategory(),
 		enabled: categoryIdFromPath != 0,
 	});
@@ -68,8 +70,6 @@ const CategoryEdit = () => {
 			}, 2500);
 		}
 	}, [mutation]);
-
-	console.log(departments);
 
 	return (
 		<>
@@ -112,12 +112,29 @@ const CategoryEdit = () => {
 							<Form.Item label="Category name" name="name">
 								<Input />
 							</Form.Item>
+
 							<Form.Item
 								label="Category description"
 								name="description"
 							>
 								<Input />
 							</Form.Item>
+
+							{departments && (
+								<Form.Item label="Department" name="departmentId">
+									<Select
+										showSearch
+										placeholder="Select a department"
+									>
+										{departments.map((department, index) => (
+											<Option key={index} value={department.id}>
+												{department.name}
+											</Option>
+										))}
+									</Select>
+								</Form.Item>
+							)}
+
 							<Form.Item>
 								<Space
 									direction="horizontal"

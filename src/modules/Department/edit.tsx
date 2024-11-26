@@ -32,10 +32,10 @@ const DepartmentEdit = () => {
 
 	const {
 		data: department,
-		isError: isloadError,
+		isError: isLoadError,
 		error: loadError,
 	} = useQuery({
-		queryKey: ["department"],
+		queryKey: ["department", departmentIdFromPath],
 		queryFn: () => fetchDepartment(),
 		enabled: departmentIdFromPath != 0,
 	});
@@ -54,6 +54,7 @@ const DepartmentEdit = () => {
 			success();
 			setTimeout(() => {
 				navigate("/department");
+				window.location.reload();
 			}, 2500);
 		}
 	}, [mutation]);
@@ -129,7 +130,7 @@ const DepartmentEdit = () => {
 							</Form.Item>
 						</Form>
 					</>
-				) : isloadError ? (
+				) : isLoadError ? (
 					<Alert
 						message={`Error while fetch ${loadError}`}
 						type="warning"

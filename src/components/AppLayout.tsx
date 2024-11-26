@@ -8,25 +8,25 @@ const { Content } = Layout
 
 const AppLayout = () => {
 
-    return (
-        <Layout style={{ minHeight: '100vh' }}>
-			<Sidebar/>
+	return (
+		<Layout style={{ minHeight: '100vh' }}>
+			<Sidebar />
 			<Layout>
 				<Header />
 				<Content style={{ margin: '0 16px' }}>
-				<div
-                    style={{
-                        padding: 24,
-                        minHeight: 360,
-                        background: '#fff',
-                    }}
-                >
-					<Outlet />
-				</div>
+					<div
+						style={{
+							padding: 24,
+							minHeight: 360,
+							background: '#fff',
+						}}
+					>
+						<Outlet />
+					</div>
 				</Content>
 			</Layout>
 		</Layout>
-    )
+	)
 }
 
 export default AppLayout
