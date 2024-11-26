@@ -5,21 +5,24 @@ import { useNavigate } from "react-router-dom";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { useEffect } from "react";
 import vendorService from "@/services/vendor.service.ts";
-import { VendorResponse } from "@/types/vendor/VendorResponseType.ts";
+import { VendorResponse } from "@/types/vendor/VendorResponse";
 
 const Vendor = () => {
-
 	const navigate = useNavigate();
 	const [messageApi, contextHolder] = message.useMessage();
 
 	const fetchVendors = async () => {
 		const { data } = await vendorService.getAll();
 		return data;
-	}
+	};
 
-	const { data: vendors, isError, error, } = useQuery({
+	const {
+		data: vendors,
+		isError,
+		error,
+	} = useQuery({
 		queryKey: ["vendors"],
-		queryFn: () => fetchVendors()
+		queryFn: () => fetchVendors(),
 	});
 
 	const success = () => {
@@ -31,12 +34,12 @@ const Vendor = () => {
 	};
 
 	const deleteVendorMutation = useMutation({
-		mutationFn: (id: number) => vendorService.delete(id)
+		mutationFn: (id: number) => vendorService.delete(id),
 	});
 
 	const deleteVendor = (id: number) => {
-		deleteVendorMutation.mutate(id)
-	}
+		deleteVendorMutation.mutate(id);
+	};
 
 	useEffect(() => {
 		if (deleteVendorMutation.isSuccess) {
@@ -96,7 +99,7 @@ const Vendor = () => {
 				</Space>
 			),
 		},
-	]
+	];
 
 	return (
 		<div>

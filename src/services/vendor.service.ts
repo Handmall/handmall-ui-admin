@@ -1,10 +1,9 @@
 import { VendorDetailResponse } from "@/types/vendor/VendorDetailResponse";
-import { VendorRequest } from "@/types/vendor/VendorRequestType.ts";
-import { VendorResponse } from "@/types/vendor/VendorResponseType.ts";
+import { VendorRequest } from "@/types/vendor/VendorRequest";
+import { VendorResponse } from "@/types/vendor/VendorResponse";
 import http from "@services/http-common.ts";
 
 class VendorService {
-
     getAll() {
         return http.get<Array<VendorResponse>>("vendor/getAll");
     }

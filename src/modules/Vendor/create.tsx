@@ -1,12 +1,11 @@
-import vendorService from "@/services/vendor.service";
-import { VendorRequest } from "@/types/vendor/VendorRequestType.ts";
+import vendorService from "@/services/vendor.service.ts";
+import { VendorRequest } from "@/types/vendor/VendorRequest.ts";
 import { useMutation } from "@tanstack/react-query";
 import { Alert, Button, Form, Input, message, Space } from "antd";
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 
 function VendorCreate() {
-
 	const navigate = useNavigate();
 	const [messageApi, contextHolder] = message.useMessage();
 
@@ -20,12 +19,12 @@ function VendorCreate() {
 
 	const mutation = useMutation({
 		mutationFn: (newVendor: VendorRequest) =>
-			vendorService.addNew(newVendor)
+			vendorService.addNew(newVendor),
 	});
 
 	const createVendor = (values: VendorRequest) => {
 		mutation.mutate(values);
-	}
+	};
 
 	useEffect(() => {
 		if (mutation.isSuccess) {
@@ -35,6 +34,7 @@ function VendorCreate() {
 			}, 2500);
 		}
 	}, [mutation]);
+
 	return (
 		<div>
 			{contextHolder}
@@ -73,19 +73,27 @@ function VendorCreate() {
 					>
 						<Input />
 					</Form.Item>
-
+					<Form.Item label="Vendor first name" name="firstName">
+						<Input />
+					</Form.Item>
+					<Form.Item label="Vendor last name" name="lastName">
+						<Input />
+					</Form.Item>
+					<Form.Item label="Email" name="email">
+						<Input type="email" />
+					</Form.Item>
 					<Form.Item
 						label="Phone number"
 						name="phoneNumber"
 						rules={[
 							{
 								required: true,
-								message: "Please input phone number!"
-							}
-						]}>
+								message: "Please input phone number!",
+							},
+						]}
+					>
 						<Input />
 					</Form.Item>
-
 
 					<Form.Item label="Vendor description" name="description">
 						<Input />
@@ -113,7 +121,7 @@ function VendorCreate() {
 				</Form>
 			</Space>
 		</div>
-	)
+	);
 }
 
-export default VendorCreate
+export default VendorCreate;

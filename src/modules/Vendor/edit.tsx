@@ -1,4 +1,4 @@
-import vendorService from '@/services/vendor.service';
+import vendorService from '@/services/vendor.service.ts';
 import { VendorDetailResponse } from '@/types/vendor/VendorDetailResponse.ts';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { Alert, Input, message, Space, Form, Button } from 'antd';
@@ -32,7 +32,7 @@ function VendorEdit() {
 
     const {
         data: vendor,
-        isError: isloadError,
+        isError: isLoadError,
         error: loadError
     } = useQuery({
         queryKey: ["vendor", vendorIdFromPath],
@@ -150,7 +150,7 @@ function VendorEdit() {
                             </Form.Item>
                         </Form>
                     </>
-                ) : isloadError ? (
+                ) : isLoadError ? (
                     <Alert
                         message={`Error while fetch ${loadError}`}
                         type="warning"

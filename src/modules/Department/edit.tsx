@@ -32,7 +32,7 @@ const DepartmentEdit = () => {
 
 	const {
 		data: department,
-		isError: isloadError,
+		isError: isLoadError,
 		error: loadError,
 	} = useQuery({
 		queryKey: ["department", departmentIdFromPath],
@@ -47,7 +47,6 @@ const DepartmentEdit = () => {
 
 	const updateDepartmentFun = (values: DepartmentRequest) => {
 		mutation.mutate(values);
-	
 	};
 
 	useEffect(() => {
@@ -131,7 +130,7 @@ const DepartmentEdit = () => {
 							</Form.Item>
 						</Form>
 					</>
-				) : isloadError ? (
+				) : isLoadError ? (
 					<Alert
 						message={`Error while fetch ${loadError}`}
 						type="warning"
