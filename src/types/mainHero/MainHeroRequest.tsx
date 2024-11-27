@@ -1,8 +1,9 @@
 export interface MainHeroRequest {
-    id: number;
+    name: string;
     title: string;
     description: string;
-    imgUrl: string;
+    img: string;
+    imgUrl?: string;
     colorHex: string;
     borderColorHex: string;
 }
