@@ -3,13 +3,16 @@ import { MainHeroResponse } from "@/types/mainHero/MainHeroResponse.tsx";
 import http from "@services/http-common.ts";
 
 class MainHeroService {
-
     getAll() {
         return http.get<Array<MainHeroResponse>>("hero/getAll");
     }
 
     addNew(data: MainHeroRequest) {
-        return http.post("hero/addNew", data);
+        return http.post("hero/addNew", data, {
+            headers: {
+                "Content-Type": "multipart/form-data",
+            },
+        });
     }
 
     update(data: MainHeroRequest, id: number) {
