@@ -7,7 +7,6 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom"
 import PlusOutlined from "@ant-design/icons/lib/icons/PlusOutlined";
 
-
 function MainHero() {
 
   const navigate = useNavigate();
@@ -69,6 +68,9 @@ function MainHero() {
       title: "Color Hex",
       dataIndex: "colorHex",
       key: "colorHex",
+      render: (colorHex) => (
+        <span>{colorHex ? colorHex : "No color"}</span> 
+      ),
     },
     {
       title: "Border Color Hex",
