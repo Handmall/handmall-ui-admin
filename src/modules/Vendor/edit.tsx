@@ -5,7 +5,7 @@ import { Alert, Input, message, Space, Form, Button } from 'antd';
 import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
 
-function VendorEdit() {
+const VendorEdit = () => {
     const navigate = useNavigate();
     const { vendorId } = useParams();
     const [messageApi, contextHolder] = message.useMessage();
