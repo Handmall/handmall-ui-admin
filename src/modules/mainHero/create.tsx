@@ -22,8 +22,7 @@ function MainHeroCreate() {
   const [uploadImg, setUploadImg] = useState<File>();
   const navigate = useNavigate();
   const [messageApi, contextHolder] = message.useMessage();
-  const [color, setColor] = useState("#1677ff");
-
+  const [form] = Form.useForm(); 
   const success = () => {
     messageApi.open({
       type: "success",
@@ -131,8 +130,8 @@ function MainHeroCreate() {
               showText={(color) => (
                 <span>Color Hex ({color.toHexString()})</span>
               )}
-              onChange={(value) => 
-                setColor(value.toHexString())
+              onChange={(value) =>
+                form.setFieldValue("colorHex", value.toHexString()) // Burada rəng yenilənir
               }
             />
           </Form.Item>
