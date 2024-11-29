@@ -5,7 +5,7 @@ import { Alert, Button, Form, Input, message, Space } from "antd";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-function VendorCreate() {
+const VendorCreate = () => {
 	const navigate = useNavigate();
 	const [messageApi, contextHolder] = message.useMessage();
 
