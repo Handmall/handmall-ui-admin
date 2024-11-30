@@ -66,6 +66,11 @@ const MainHero = () => {
 			render: (_, _record, index) => <b>{index + 1}</b>,
 		},
 		{
+			title: "Name",
+			dataIndex: "name",
+			key: "name",
+		},
+		{
 			title: "Title",
 			dataIndex: "title",
 			key: "title",
@@ -178,6 +183,6 @@ const MainHero = () => {
 			</Space>
 		</>
 	);
-}
+};
 
 export default MainHero;
