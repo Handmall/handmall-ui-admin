@@ -1,7 +1,9 @@
 export interface MainHeroResponse {
-    id: number;
-    title: string;
-    imgUrl: string;
-    colorHex: string;
-    borderColorHex: string;
+	id: number;
+	name: string;
+	title: string;
+	description: string;
+	imgUrl: string;
+	colorHex: string;
+	borderColorHex: string;
 }
