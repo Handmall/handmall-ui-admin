@@ -4,7 +4,7 @@ import http from "@services/http-common.ts";
 
 class MainHeroService {
     getAll() {
-        return http.get<Array<MainHeroResponse>>("hero/admin/getAll");
+        return http.get<Array<MainHeroResponse>>("hero/getAll");
     }
 
     addNew(data: MainHeroRequest) {
