@@ -15,8 +15,16 @@ class MainHeroService {
         });
     }
 
+    getById(id: number) {
+        return http.get<MainHeroResponse>(`hero/get/${id}`);
+    }
+
     update(data: MainHeroRequest, id: number) {
-        return http.put(`hero/update/${id}`, data);
+        return http.put(`hero/update/${id}`, data, {
+            headers: {
+                "Content-Type": "multipart/form-data",
+            },
+        });
     }
 
     delete(id: number) {

@@ -1,5 +1,5 @@
 import vendorService from '@/services/vendor.service.ts';
-import { VendorDetailResponse } from '@/types/vendor/VendorDetailResponse.ts';
+import { VendorRequest } from '@/types/vendor/VendorRequest';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { Alert, Input, message, Space, Form, Button } from 'antd';
 import { useEffect, useState } from 'react'
@@ -41,13 +41,12 @@ const VendorEdit = () => {
     });
 
     const mutation = useMutation({
-        mutationFn: (updateVendor: VendorDetailResponse) =>
+        mutationFn: (updateVendor: VendorRequest) =>
             vendorService.update(updateVendor, vendorIdFromPath),
     })
 
-    const updateVendorFun = (values: VendorDetailResponse) => {
-        mutation.mutate(values)
-        
+    const updateVendorFun = (values: VendorRequest) => {
+        mutation.mutate(values)   
     }
 
     useEffect(() => {

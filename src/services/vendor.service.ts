@@ -16,7 +16,7 @@ class VendorService {
         return http.post("vendor/addNew", data);
     }
 
-    update(data: VendorDetailResponse, id: number) {
+    update(data: VendorRequest, id: number) {
         return http.put(`vendor/update/${id}`, data);
     }
 
