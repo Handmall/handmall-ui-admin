@@ -6,4 +6,5 @@ export interface MainHeroRequest {
 	imgUrl?: string;
 	colorHex: string;
 	borderColorHex: string;
+	textColorHex: string;
 }

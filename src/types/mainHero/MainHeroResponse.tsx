@@ -6,4 +6,5 @@ export interface MainHeroResponse {
 	imgUrl: string;
 	colorHex: string;
 	borderColorHex: string;
+	textColorHex: string;
 }

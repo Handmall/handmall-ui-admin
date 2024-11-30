@@ -24,6 +24,7 @@ const MainHeroCreate = () => {
 	const [messageApi, contextHolder] = message.useMessage();
 	const [selectColorHex, setSelectColorHex] = useState("#1677ff");
 	const [selectBorderColorHex, setSelectBorderColorHex] = useState("#1677ff");
+	const [selectTextColorHex, setSelectTextColorHex] = useState("#1677ff");
 
 	const success = () => {
 		messageApi.open({
@@ -44,6 +45,7 @@ const MainHeroCreate = () => {
 			img: uploadImg ?? null,
 			colorHex: selectColorHex,
 			borderColorHex: selectBorderColorHex,
+			textColorHex: selectTextColorHex,
 		};
 		mutation.mutate(heroData);
 	};
@@ -148,6 +150,23 @@ const MainHeroCreate = () => {
 							)}
 							onChangeComplete={(value) =>
 								setSelectBorderColorHex(value.toHexString())
+							}
+						/>
+					</Form.Item>
+
+					<Form.Item
+						label="Text Color Hex"
+						name="textColorHex"
+						initialValue={selectTextColorHex}
+					>
+						<ColorPicker
+							showText={(color) => (
+								<span>
+									Text Color Hex ({color.toHexString()})
+								</span>
+							)}
+							onChangeComplete={(value) =>
+								setSelectTextColorHex(value.toHexString())
 							}
 						/>
 					</Form.Item>

@@ -23,6 +23,7 @@ function MainHeroEdit() {
 	const [mainHeroIdFromPath, setMainheroIdFromPath] = useState(0);
 	const [selectColorHex, setSelectColorHex] = useState("#1677ff");
 	const [selectBorderColorHex, setSelectBorderColorHex] = useState("#1677ff");
+	const [selectTextColorHex, setSelectTextColorHex] = useState("#1677ff");
 	const [uploadImg, setUploadImg] = useState<File>();
 
 	useEffect(() => {
@@ -67,8 +68,8 @@ function MainHeroEdit() {
 			imgUrl: uploadImg ? "" : hero?.imgUrl,
 			colorHex: selectColorHex,
 			borderColorHex: selectBorderColorHex,
+            textColorHex: selectTextColorHex,
 		};
-		console.log(values);
 		mutation.mutate(heroData);
 	};
 
@@ -194,6 +195,26 @@ function MainHeroEdit() {
 									)}
 									onChangeComplete={(value) =>
 										setSelectBorderColorHex(
+											value.toHexString()
+										)
+									}
+								/>
+							</Form.Item>
+
+                            <Form.Item
+								label="Text Color Hex"
+								name="textColorHex"
+								initialValue={selectTextColorHex}
+							>
+								<ColorPicker
+									showText={(color) => (
+										<span>
+											Text Color Hex (
+											{color.toHexString()})
+										</span>
+									)}
+									onChangeComplete={(value) =>
+										setSelectTextColorHex(
 											value.toHexString()
 										)
 									}

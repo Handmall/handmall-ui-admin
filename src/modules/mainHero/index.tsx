@@ -117,6 +117,20 @@ const MainHero = () => {
 			),
 		},
 		{
+			title: "Text Color Hex",
+			dataIndex: "textColorHex",
+			key: "textColorHex",
+			render: (textColorHex) => (
+				<span>
+					{textColorHex ? (
+						<Badge color={textColorHex} text={textColorHex} />
+					) : (
+						"No color"
+					)}
+				</span>
+			),
+		},
+		{
 			title: "Action",
 			key: "action",
 			render: (_, record: MainHeroResponse) => (
