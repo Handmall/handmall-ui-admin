@@ -1,6 +1,6 @@
 import { checkAuth, getToken } from "@/utils/auth.ts";
 import { getAuthorizationHeader } from "@/utils/getAuthorizationHeader.ts";
-import axios from "axios";
+import axios, { AxiosInstance } from "axios";
 
 interface Params {
     baseURL: string;
@@ -9,38 +9,47 @@ interface Params {
     withCredentials: boolean;
 }
 
-const config: Params = {
-    baseURL: "http://localhost:8080/api/v1",
+// Create an Axios instance
+const ax: AxiosInstance = axios.create({
+    baseURL: "https://jsonplaceholder.typicode.com", // Correct base URL
     headers: getAuthorizationHeader(),
     timeout: 30000,
-    withCredentials: true,
-};
+    withCredentials: false,
+});
 
-const ax = axios.create(config);
-
+// Request interceptor for attaching Authorization token
 ax.interceptors.request.use(
     (req) => {
-        const isAuth = checkAuth();
-        if (isAuth == true) {
+        if (checkAuth()) {
             const token = getToken();
             if (token) {
-                req.headers.Authorization = `Bearer ${token || ""}`;
-                return req;
+                // Add Authorization header only if token exists
+                req.headers.Authorization = `Bearer ${token}`;
+            } else {
+                // Ensure Authorization header is undefined if token doesn't exist
+                delete req.headers.Authorization;
             }
-            return req;
         }
         return req;
     },
     (error) => {
-        const status = error.response ? error.response.status : null;
-        const req = error.config;
-        if (status == 401) {
-            req._retry = true;
-        } else if (status == 403) {
-            req._retry = true;
+        const status = error.response?.status;
+        if ([401, 403].includes(status)) {
+            // Add any retry logic if needed here
         }
         return Promise.reject(error);
     }
 );
 
+// Fetch products (simulated products from JSONPlaceholder)
+const getProducts = async () => {
+    try {
+        const response = await ax.get("/posts"); // Posts are used as products here
+        console.log(response.data); // This will contain post data
+    } catch (error) {
+        console.error("Error fetching products:", error);
+    }
+};
+
 export default ax;
+export { getProducts };

@@ -6,6 +6,11 @@ import NotFound from "@components/NotFound.tsx";
 import categoryRoutes from "./category.tsx";
 import departmentRoutes from "./department.tsx";
 import vendorRoutes from "./vendor.tsx";
+import productRoutes from "./product.tsx";
+import orderRoutes from "./order.tsx";
+import paymentRoutes from "./payment.tsx";
+import settingsRoutes from "./settings.tsx";
+import userRoutes from "./users.tsx";
 
 const routes: RouteObject[] = [
 	{
@@ -17,6 +22,10 @@ const routes: RouteObject[] = [
 				element: <Dashboard />,
 			},
 			{
+				path: "users",
+				children: userRoutes,
+			},
+			{
 				path: "category",
 				children: categoryRoutes,
 			},
@@ -25,8 +34,25 @@ const routes: RouteObject[] = [
 				children: departmentRoutes,
 			},
 			{
+				path: "product",
+				children: productRoutes,
+			},
+			{
+				path: "order",
+				children: orderRoutes,
+			},
+			{
+				path: "payment",
+				children: paymentRoutes,
+			},
+
+			{
 				path: "vendor",
 				children: vendorRoutes,
+			},
+			{
+				path: "settings",
+				children: settingsRoutes,
 			},
 		],
 	},

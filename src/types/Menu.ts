@@ -1,6 +1,6 @@
 export interface Menu {
-    name: string
-    icon: React.ComponentType
-    url: string
-    subItems?: Menu[]
+    name: string;
+    icon: any;
+    url: string;
+    subItems?: Menu[];
 }

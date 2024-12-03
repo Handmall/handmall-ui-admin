@@ -15,7 +15,7 @@ const AppHeader = () => {
 	];
 
 	return (
-		<Header style={{ padding: 0, background: "#fff" }}>
+		<Header style={{ padding: 0, background: "rgba(249, 248, 255, 1)" }}>
 			<Row>
 				<Col span={1} offset={22}>
 					<Dropdown menu={{ items }} placement="bottomRight">

@@ -2,6 +2,8 @@ import { Link, useLocation } from "react-router-dom";
 import menuItems from "@constants/menu";
 import { Layout, Menu, MenuProps } from "antd";
 import { createElement, useEffect, useState } from "react";
+import logo from "@assets/logo.png"; // Adjust the path to your logo file
+import "../styles/Sidebar.css"; // Import the Sidebar CSS file here
 
 const { Sider } = Layout;
 
@@ -26,7 +28,7 @@ const Sidebar = () => {
 							icon: createElement(si.icon),
 							label: <Link to={si.url}>{si.name}</Link>,
 						};
-				  })
+					})
 				: null,
 		};
 	});
@@ -42,21 +44,51 @@ const Sidebar = () => {
 			collapsible
 			collapsed={collapsed}
 			onCollapse={(value: boolean) => setCollapsed(value)}
+			style={{
+				width: 200,
+				minHeight: "100vh",
+				backgroundColor: "rgba(249, 248, 255, 1)",
+			}}
 		>
+			{/* Logo Above Menu */}
 			<div
 				style={{
-					height: 32,
-					margin: 16,
-					background: "rgba(255, 255, 255, 0.2)",
+					height: 60,
+					display: "flex",
+					alignItems: "center",
+					justifyContent: "center",
+					background: "rgba(249, 248, 255, 1)",
+					margin: "16px 0",
 				}}
-			/>
-			<Menu
-				theme="dark"
-				mode="inline"
-				defaultSelectedKeys={[pathId.toString()]}
-				selectedKeys={[pathId.toString()]}
-				items={menu}
-			/>
+			>
+				<img src={logo} alt="Logo" style={{ height: 40 }} />
+			</div>
+
+			{/* Menu Section */}
+			<div
+				style={{
+					background: "rgba(249, 248, 255, 1)",
+					display: "flex",
+					alignItems: "center",
+					justifyContent: "center",
+				}}
+			>
+				<Menu
+					theme="light"
+					mode="inline"
+					defaultSelectedKeys={[pathId.toString()]}
+					selectedKeys={[pathId.toString()]}
+					items={menu}
+					style={{
+						borderRight: 0,
+						background: "rgba(249, 248, 255, 1)",
+						overflowY: "auto",
+						borderRadius: "3px",
+					}}
+					onClick={(e) => setPathId(Number(e.key))}
+					inlineIndent={60}
+				/>
+			</div>
 		</Sider>
 	);
 };
