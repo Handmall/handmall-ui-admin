@@ -8,6 +8,7 @@ import departmentRoutes from "./department.tsx";
 import vendorRoutes from "./vendor.tsx";
 import { getToken } from "../utils/auth.ts";
 import mainHeroRoutes from "./mainHero.tsx";
+import Tag from "./tag.tsx";
 
 const routes: RouteObject[] = [
 	{
@@ -33,6 +34,10 @@ const routes: RouteObject[] = [
 			{
 				path: "mainHero",
 				children: mainHeroRoutes,
+			},
+			{
+				path: "tag",
+				children: Tag,
 			},
 		],
 	},

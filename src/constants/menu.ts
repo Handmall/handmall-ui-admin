@@ -27,6 +27,11 @@ const menuItems: Menu[] = [
         icon: UserOutlined,
         url: "/mainHero",
     },
+    {
+        name: "Tag",
+        icon: UserOutlined,
+        url: "/tag",
+    },
 ];
 
 export default menuItems;
